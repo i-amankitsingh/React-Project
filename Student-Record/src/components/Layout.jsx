@@ -78,6 +78,10 @@ const Layout = () => {
         const result = await res.json();
         console.log(result)
         getStudent()
+        setName('')
+        setCourse('')
+        setCity('')
+        setBtn('Save')
     }
 
     useEffect(() => {
@@ -89,16 +93,16 @@ const Layout = () => {
          <div className="w-full md:flex gap-10 p-10 bg-sky-300 h-svh">
             <div className="w-full">
                 <div>
-                    <input type="text" placeholder="Name" className="w-full rounded-md outline-none p-3" onChange={(e) => setName(e.target.value)} value={name} />
+                    <input type="text" required placeholder="Name" className="w-full rounded-md outline-none p-3" onChange={(e) => setName(e.target.value)} value={name} />
                 </div>
                 <div className="my-5">
-                    <select className="w-full outline-none p-3 rounded-md" onChange={(e) => setCourse(e.target.value)}>
+                    <select required className="w-full outline-none p-3 rounded-md" onChange={(e) => setCourse(e.target.value)}>
                     <option disabled selected className="text-gray-500">-- Select Here --</option>
                         {stdData?.city?.map((opt) => <option key={opt.id} value={opt.id} selected={opt.id === course}>{opt.name}</option>)}
                     </select>
                 </div>
                 <div>
-                    <input type="text" placeholder="City" className="w-full rounded-md outline-none p-3" onChange={(e) => setCity(e.target.value)} value={city} />
+                    <input type="text" required placeholder="City" className="w-full rounded-md outline-none p-3" onChange={(e) => setCity(e.target.value)} value={city} />
                 </div>
                 <div>
                     <input type="button" value={btn} className="w-full rounded-md outline-none p-3 bg-blue-500 text-white mt-5 cursor-pointer"
