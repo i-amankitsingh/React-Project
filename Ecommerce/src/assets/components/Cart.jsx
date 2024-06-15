@@ -110,6 +110,10 @@ const Cart = () => {
         setTotal(totalAmount)
     }
 
+    const setProductData = () => {
+        sessionStorage.setItem('orderData', JSON.stringify(cart))
+    }
+
     return (
         <>
             <div className="container mx-auto p-4">
@@ -174,8 +178,8 @@ const Cart = () => {
                             <span>Total</span>
                             <span>${total.toFixed(2)}</span>
                         </div>
-                        <Link to='/order'>
-                            <button className="w-full bg-green-400 text-white p-2 rounded-lg">Proceed to Checkout</button>
+                        <Link to={`/order`}>
+                            <button className="w-full bg-green-400 text-white p-2 rounded-lg" onClick={setProductData}>Proceed to Checkout</button>
                         </Link>
                     </div>
                 </div>

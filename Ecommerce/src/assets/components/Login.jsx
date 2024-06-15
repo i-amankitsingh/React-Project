@@ -38,7 +38,7 @@ const Login = () => {
     setLoading(true)
     try {
       const res = await signInWithEmail(email, password);
-      console.log('Response', res);
+      // console.log('Response', res);
       if (res[0]) {
         sessionStorage.setItem('isLogin', true);
         dispatch(login())

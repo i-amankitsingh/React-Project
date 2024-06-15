@@ -23,6 +23,7 @@ const MyAccount = () => {
         sessionStorage.setItem('isLogin', false)
         const isLogin = JSON.parse(sessionStorage.getItem('isLogin'))
         dispatch(logout())
+        sessionStorage.removeItem('orderData');
         navigate('/')
     }
 
@@ -30,7 +31,7 @@ const MyAccount = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if(user){
                 sessionStorage.setItem('userInfo', JSON.stringify(user))
-                console.log(user);
+                // console.log(user);
                 setUserDetails(JSON.parse(sessionStorage.getItem('userInfo')))
             }
             else{

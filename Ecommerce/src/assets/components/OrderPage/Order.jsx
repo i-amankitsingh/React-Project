@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Order = () => {
   const navigate = useNavigate();
-  
+  const [cartItem, setCartItem] = useState([])
+
+
   const [shippingInfo, setShippingInfo] = useState({
     name: '',
     address: '',
@@ -12,10 +14,9 @@ const Order = () => {
     zip: '',
   });
 
-  const [cartItems] = useState([
-    { id: 1, name: 'Product 1', price: 29.99, quantity: 1 },
-    { id: 2, name: 'Product 2', price: 49.99, quantity: 2 },
-  ]);
+  useEffect(() => {
+    setCartItem(JSON.parse(sessionStorage.getItem('orderData')))
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,14 +32,16 @@ const Order = () => {
     navigate('/payment', {
       state: {
         shippingInfo: shippingInfo,
-        cartItems: cartItems,
+        cartItems: cartItem,
       },
     });
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    return cartItem.reduce((total, item) => total + item.price * item.qty, 0).toFixed(2);
   };
+
+  if(!cartItem) return navigate('/')
 
   return (
     <div className="p-4">
@@ -112,14 +115,14 @@ const Order = () => {
         </div>
         <div className="cart-summary md:w-1/2 border border-blue-400 p-4 rounded-md">
           <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
-          {cartItems.map((item) => (
+          {cartItem?.map((item) => (
             <div key={item.id} className="cart-item flex justify-between mb-4">
-              <p>{item.name} x {item.quantity}</p>
-              <p>${item.price.toFixed(2)}</p>
+              <p className=''>{item?.title} <i className='fa fa-times text-lg mx-3'></i> {item?.qty}</p>
+              <p className='font-semibold'>${item?.disPrice? item.disPrice : item.price}</p>
             </div>
           ))}
           <div className="total font-bold border-t border-gray-300 pt-4 mt-4">
-            <p>Total: ${calculateTotal()}</p>
+            <p>Total: ${cartItem[0]?.disPrice? cartItem[0].disPrice : Number(calculateTotal()) + 20}</p>
           </div>
         </div>
       </div>

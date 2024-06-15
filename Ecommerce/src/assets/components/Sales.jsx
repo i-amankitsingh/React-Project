@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProduct } from './Cart';
 import Loader from "../../Loader"
+import { useNavigate } from 'react-router-dom';
 
 const Sales = () => {
 
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const navigator = useNavigate()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -19,9 +21,12 @@ const Sales = () => {
 
   }, [])
 
-  useEffect(() => {
-    // console.log(products);
-  }, [])
+  const handleOrder = (product) => {
+    product.qty = 1;
+    product.disPrice = (product.price - (product.saleDis / 100 * product.price)).toFixed(2)
+    sessionStorage.setItem('orderData', JSON.stringify([product]))
+    navigator('/order')
+  }
 
 
   return (
@@ -43,13 +48,14 @@ const Sales = () => {
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">{product.title}</h2>
                 <p className="text-gray-600 mb-4">{product.description}</p>
+                <span className='font-semibold text-xl text-red-600 block mt-3'>{product.saleDis}% <span className='text-sm text-black'>OFF</span></span>
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-red-600 font-bold text-xl mr-2">${(product.saleDis / product.price * 100).toFixed(2)}</span>
+                    <span className="text-red-600 font-bold text-xl mr-2">${(product.price - (product.saleDis / 100 * product.price )).toFixed(2)}</span>
                     <span className="line-through text-gray-500">${product.price}</span>
                   </div>
-                  <button className="bg-green-400 text-white py-2 px-4 rounded hover:bg-green-500">
-                    Add to Cart
+                  <button className="bg-green-400 text-white py-2 px-4 rounded hover:bg-green-500" onClick={() => handleOrder(product)}>
+                    Order Now
                   </button>
                 </div>
               </div>

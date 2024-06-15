@@ -5,7 +5,7 @@ import viewProduct from "../../FeatureFunction/viewProduct";
 import { useDispatch } from "react-redux";
 
 
-const Product = () => {
+const Product = ({handleParentLoader}) => {
 
     const [isLoading, setLoading] = useState(false)
     const [data, setData] = useState([])
@@ -41,6 +41,7 @@ const Product = () => {
                 const result = await res.json();
                 setData(result)
                 setStore(result)
+                handleParentLoader()
                 if (!res.ok) {
                     throw result
                 }
@@ -92,14 +93,14 @@ const Product = () => {
         }
 
         const filterPriceData = () => {
-                console.log("Price ", price);
+                // console.log("Price ", price);
                 if(filterArr.length > 0){
                     setData(data?.filter(row => row.price <= price && filterArr.includes(row.category && Math.round(row.rating.rate) <= rating)))
                 }
                 else{
                     setData(data?.filter(row => row.price <= price && Math.round(row.rating.rate) <= rating ))
                 }
-                console.log("Returned Data :: ", data?.filter(row => row.price <= price ))
+                // console.log("Returned Data :: ", data?.filter(row => row.price <= price ))
                 // console.log("Price Data ", data);
                 
             }
