@@ -10,6 +10,8 @@ const Loader = ({loadingText, loadingImg, toggle, cls}) => {
           document.body.style.overflow = 'auto';
         };
       }, []);
+
+      
     return (
         <>
             <div className={`w-full h-full bg-white absolute z-20 p-5 ${cls}`}>

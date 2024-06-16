@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Order = () => {
   const navigate = useNavigate();
   const [cartItem, setCartItem] = useState([])
+  const isLogin = useSelector(state => state.authSlice.isLoggedIn)
 
+  if(!isLogin){
+    navigate('/login')
+  }
 
   const [shippingInfo, setShippingInfo] = useState({
     name: '',
@@ -115,14 +120,20 @@ const Order = () => {
         </div>
         <div className="cart-summary md:w-1/2 border border-blue-400 p-4 rounded-md">
           <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
+          <div>
+
+          </div>
           {cartItem?.map((item) => (
-            <div key={item.id} className="cart-item flex justify-between mb-4">
+            <div key={item.id} className="cart-item md:flex justify-between gap-5 mb-4">
               <p className=''>{item?.title} <i className='fa fa-times text-lg mx-3'></i> {item?.qty}</p>
               <p className='font-semibold'>${item?.disPrice? item.disPrice : item.price}</p>
             </div>
           ))}
+          <div>
+            <p className='md:flex justify-between gap-5'>Tax <span className='font-semibold'>$20</span></p>
+          </div>
           <div className="total font-bold border-t border-gray-300 pt-4 mt-4">
-            <p>Total: ${cartItem[0]?.disPrice? cartItem[0].disPrice : Number(calculateTotal()) + 20}</p>
+            <p>Total: ${cartItem[0]?.disPrice? cartItem[0].disPrice : (Number(calculateTotal()) + 20).toFixed(2)}</p>
           </div>
         </div>
       </div>

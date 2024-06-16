@@ -19,6 +19,7 @@ import Sales from './assets/components/Sales.jsx'
 import ContactUs from './assets/components/ContactUs.jsx'
 import Order from './assets/components/OrderPage/Order.jsx'
 import Payment from './assets/components/OrderPage/Payment.jsx'
+import Account from './assets/components/Account/Account.jsx'
 
 
 
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
       <Route path='contact' element={<ContactUs />} />
       <Route path='order' element={<Order />} />
       <Route path='payment' element={<Payment />} />
+      <Route path='account' element={<Account />} />
     </Route>
   )
 )

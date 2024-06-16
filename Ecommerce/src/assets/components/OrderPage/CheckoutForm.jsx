@@ -68,6 +68,7 @@ const CheckoutForm = ({ shippingInfo, cartItems }) => {
     } else {
       console.log('[PaymentMethod]', paymentMethod);
       handlePayment(paymentMethod);
+      alert("Your order is placed!")
     }
   };
 

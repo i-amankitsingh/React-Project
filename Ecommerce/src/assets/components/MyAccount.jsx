@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import userIcon from "/icon/user.png"
 import { signOutUser } from "../../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../Functionality/authSlice";
 import { onAuthStateChanged } from "../../firebase";
@@ -49,7 +49,7 @@ const MyAccount = () => {
                 <div className={`shadow-md w-48 px-5 py-3 absolute  top-14 md:left-[-65px] md:right-auto right-[-30px] bg-white ${toggle? "" : "hidden"}`}>
                     <ul>
                         <li className="cursor-pointer">{userDetails.displayName}</li>
-                        <li className="cursor-pointer">My Account</li>
+                        <Link to='/account' className="cursor-pointer">My Account</Link>
                         <li className="cursor-pointer" onClick={handleSignOut}>Log Out</li>
                     </ul>
                 </div>

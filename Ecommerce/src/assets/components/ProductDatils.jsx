@@ -86,6 +86,13 @@ const ProductDetails = () => {
     }
   }
 
+  const handleOrder = (product) => {
+    product.qty = 1;
+    product.disPrice = product.price;
+    sessionStorage.setItem('orderData', JSON.stringify([product]))
+    navigator('/order')
+  }
+
   return (
     <div className="container mx-auto p-4 my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -102,6 +109,9 @@ const ProductDetails = () => {
           <div className="flex gap-5 sm:flex-nowrap flex-wrap">
             <button className="bg-green-400 text-white px-4 py-2 rounded hover:bg-green-600 transition flex-1 min-w-[150px]" onClick={() => addToWish(product)}>Add To Wishlist</button>
             <button className={`${isAdded ? "bg-gray-300" : "bg-blue-400"} text-white px-4 py-2 rounded ${isAdded ? "hover:bg-gray-300" : "hover:bg-blue-600"} transition flex-1 min-w-[150px]`} onClick={() => addToCart(product)}>{isAdded ? "Added To Cart" : "Add To Cart"}</button>
+          </div>
+          <div>
+            <button className="w-full bg-gradient-to-r hover:bg-gradient-to-l from-blue-400 to-green-400  text-white rounded-md py-2" onClick={() => handleOrder(product)}>Order</button>
           </div>
           <div className="mt-6">
             <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
