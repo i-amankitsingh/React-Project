@@ -47,7 +47,7 @@ const MyAccount = () => {
             <div className="relative">
                 <img src={userDetails.photoURL? userDetails.photoURL : userIcon} className="w-8 cursor-pointer rounded-full" onClick={handleToggle} />
                 <div className={`shadow-md w-48 px-5 py-3 absolute  top-14 md:left-[-65px] md:right-auto right-[-30px] bg-white ${toggle? "" : "hidden"}`}>
-                    <ul>
+                    <ul onClick={handleToggle}>
                         <li className="cursor-pointer">{userDetails.displayName}</li>
                         <Link to='/account' className="cursor-pointer">My Account</Link>
                         <li className="cursor-pointer" onClick={handleSignOut}>Log Out</li>

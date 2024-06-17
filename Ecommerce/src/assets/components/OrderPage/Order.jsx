@@ -133,7 +133,7 @@ const Order = () => {
             <p className='md:flex justify-between gap-5'>Tax <span className='font-semibold'>$20</span></p>
           </div>
           <div className="total font-bold border-t border-gray-300 pt-4 mt-4">
-            <p>Total: ${cartItem[0]?.disPrice? cartItem[0].disPrice : (Number(calculateTotal()) + 20).toFixed(2)}</p>
+            <p>Total: ${cartItem[0]?.disPrice? Number(cartItem[0].disPrice) + 20  : (Number(calculateTotal()) + 20).toFixed(2)}</p>
           </div>
         </div>
       </div>

@@ -87,8 +87,7 @@ const ProductDetails = () => {
   }
 
   const handleOrder = (product) => {
-    product.qty = 1;
-    product.disPrice = product.price;
+    product =  ({...product, qty: 1, disPrice: product.price})
     sessionStorage.setItem('orderData', JSON.stringify([product]))
     navigator('/order')
   }

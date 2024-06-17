@@ -1,11 +1,13 @@
 // src/components/Account.js
 import React, { useEffect, useState } from 'react';
 import { auth, onAuthStateChanged, signOutUser } from '../../../firebase';
-import userIcon from '/icon/user.png'
-
+import userIcon from '/icon/user.png';
+import { logout } from '../../../Functionality/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Account = () => {
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -16,7 +18,12 @@ const Account = () => {
   }, []);
 
   if (!user) {
-    return <div className="flex justify-center items-center h-screen">Please Login First!....</div>;
+    return <div className="flex justify-center items-center h-screen text-lg">You are logged out now!</div>;
+  }
+
+  const loggedOutUser = async() => {
+    await signOutUser()
+    dispatch(logout())
   }
 
   return (
@@ -39,7 +46,7 @@ const Account = () => {
           <div className="bg-gray-100 p-2 rounded">{user.uid}</div>
         </div>
         <button
-          onClick={signOutUser}
+          onClick={loggedOutUser}
           className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
         >
           Sign Out
