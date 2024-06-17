@@ -62,10 +62,10 @@ const Footer = () => {
                 <div className="lg:mt-0 mt-5">
                     <strong>Join Us Here</strong>
                     <div className="flex gap-3 mt-5">
-                        <a href="" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-instagram"></i></a>
-                        <a href="" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-twitter"></i></a>
-                        <a href="" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-facebook"></i></a>
-                        <a href="" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/itz.____ankit/" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-instagram"></i></a>
+                        <a href="https://github.com/i-amankitsingh" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100040956545130" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/ankit-singh-jethuri/" className="grid w-8 h-8 rounded-full bg-blue-400 hover:bg-green-400 transition-all duration-400 cursor-pointer text-white text-lg place-items-center"><i className="fa fa-linkedin"></i></a>
                     </div>
                     <img src="/image/join-us.jpg" className="w-48 mt-5" />
                 </div>
