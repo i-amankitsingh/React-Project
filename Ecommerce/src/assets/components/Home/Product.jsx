@@ -52,7 +52,7 @@ const Product = ({handleParentLoader}) => {
             }
         }
         fetchData()
-    }, [data])
+    }, [])
 
     const filterLoader = () => {
         setLoading(true);
