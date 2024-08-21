@@ -1,0 +1,57 @@
+.switch {
+    position: relative;
+    width: 50px;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 50px;
+    transition: .4s;
+    -webkit-transition: .4s;
+}
+
+
+.switch:before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#check{
+    display: none;
+}
+
+#check:checked ~ .switch:before{
+    transform: translateX(20px);
+}
+
+#check:checked ~ .switch{
+    background-color: #2196F3;
+}
+
+input{
+    accent-color: white;
+}
+
+.white-key{
+    background: linear-gradient(#fff 96%, #eee 4%);
+}
+
+.white-key.active{
+    box-shadow: inset -5px 5px 20px rgba(0,0,0,.2);
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.black-key{
+    background: linear-gradient(#333, #000);
+}
+
+.black-key.active{
+    box-shadow: inset -5px -10px 10px rgba(255, 255, 255, .1);
+    background: linear-gradient(to bottom, #000, #434343);
+}
