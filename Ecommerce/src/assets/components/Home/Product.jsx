@@ -38,8 +38,10 @@ const Product = ({handleParentLoader}) => {
         const fetchData = async () => {
             try {
                 const res = await fetch('https://fakestoreapi.com/products');
+                // const res = await fetch("https://api.escuelajs.co/api/v1/products");
                 const result = await res.json();
                 setData(result)
+                console.log("Result of product ", result)
                 setStore(result)
                 handleParentLoader()
                 if (!res.ok) {
@@ -211,7 +213,7 @@ const Product = ({handleParentLoader}) => {
                     <div className="flex sm:justify-start justify-center gap-10 p-2 flex-wrap items-start">
                         {data?.map((row) =>
                             <div className="flex-1 min-w-[250px] border border-1 border-blue-400 p-4 rounded-sm max-w-[350px]" key={row?.id}>
-                                <img src={row?.image} className="aspect-square" />
+                                <img src={row.image} className="aspect-square" />
                                 <div>
                                     <span className="text-gray-500 uppercase block my-3">{row?.category}</span>
                                     <h2 className="text-2xl my-3">{row?.title}</h2>
